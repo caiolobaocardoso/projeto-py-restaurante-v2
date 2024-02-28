@@ -45,10 +45,11 @@ def cadastro_rest():
     
 def retorno_cad():
     retorno_c = input('Deseja cadastrar um novo restaurante? [Sim/Nao]')
+    upper_retorno_c = retorno_c.upper()
 
-    if retorno_c == 'Sim':
+    if upper_retorno_c == 'SIM':
         cadastro_rest()
-    elif retorno_c == 'Nao':
+    elif upper_retorno_c == 'NAO':
         time.sleep(1)
         os.system('clear')
         print('Voltando ao menu')
@@ -65,7 +66,7 @@ def listar_rest():
     for restaurante in rest:
         nome_restaurante = restaurante['nome']
         categoria = restaurante['categoria']
-        ativo = restaurante['ativo']
+        ativo = 'ativado' if restaurante['ativo'] else 'desativado'
         print(f' - {nome_restaurante} | {categoria} | {ativo} ')
     
     input('\nDigite uma tecla para continuar: ')
@@ -82,16 +83,22 @@ def alternar_estado_restaurante():
             restaurante['ativo'] = not restaurante['ativo']
             mensagem = f'O restaurante {nome_restaurante} foi ativado com sucesso' if restaurante['ativo'] else f'O restaurante {nome_restaurante} foi desativado com sucesso'
             print(mensagem)
-    
-    retorno_ativacao()
+            retorno_ativacao()
 
+    if not restaurante_encontrado:
+        print('Digite um restaurante válido!')
+        time.sleep(1)
+        alternar_estado_restaurante()
+    
+    main()
 
 def retorno_ativacao():
-    retorno_l = input('Deseja listar um novo restaurante? [Sim/Nao]')
+    retorno_l = input('Deseja ativar um novo restaurante? [Sim/Nao]')
+    upper_retorno_l = retorno_l.upper()
 
-    if retorno_l == 'Sim':
+    if upper_retorno_l == 'SIM':
         alternar_estado_restaurante()
-    elif retorno_l == 'Nao':
+    elif upper_retorno_l == 'NAO':
         time.sleep(1)
         os.system('clear')
         print('Voltando ao menu')
@@ -102,9 +109,8 @@ def retorno_ativacao():
         print('Insira uma opção válida')
         retorno_ativacao()
 
-
 def escolha_user():
-    #try:
+    try:
         escolha_user =  int(input('Escolha uma opção: '))
         if escolha_user == 1:
             cadastro_rest()
@@ -116,7 +122,7 @@ def escolha_user():
             finalizar_app()
         else:
             opcao_invalida()
-    #except:
+    except:
             opcao_invalida()
 
 def main():
