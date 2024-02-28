@@ -17,7 +17,8 @@ def exibir_opcoes():
     print('1. Cadastrar Restaurante')
     print('2. Listar Restaurante')
     print('3. Ativar Restaurante')
-    print('4. Sair')
+    print('4. Remover Restaurante')
+    print('5. Sair')
 
 def subtitulo(texto):
     os.system('clear')
@@ -109,8 +110,18 @@ def retorno_ativacao():
         print('Insira uma opção válida')
         retorno_ativacao()
 
+# def remover_rest():
+#     subtitulo('Remocao de restaurantes')
+#     nome_restaurante_remover = input('Digite o nome do restaurante que deseja remover: ')
+#     restaurante_encontrado = False
+    
+#     for restaurante in rest:
+#         if nome_restaurante_remover == restaurante['nome']:
+#             restaurante_encontrado = True
+#             rest.pop('nome')
+
 def escolha_user():
-    try:
+    #try:
         escolha_user =  int(input('Escolha uma opção: '))
         if escolha_user == 1:
             cadastro_rest()
@@ -119,10 +130,12 @@ def escolha_user():
         elif escolha_user == 3:
             alternar_estado_restaurante()
         elif escolha_user == 4:
+            remover_rest()
+        elif escolha_user == 5:
             finalizar_app()
         else:
             opcao_invalida()
-    except:
+    #except:
             opcao_invalida()
 
 def main():
