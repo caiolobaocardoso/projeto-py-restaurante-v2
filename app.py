@@ -17,8 +17,8 @@ def exibir_opcoes():
     print('1. Cadastrar Restaurante')
     print('2. Listar Restaurante')
     print('3. Ativar Restaurante')
-    print('4. Remover Restaurante')
-    print('5. Sair')
+    # print('4. Remover Restaurante')
+    print('4. Sair')
 
 def subtitulo(texto):
     os.system('clear')
@@ -129,9 +129,9 @@ def escolha_user():
             listar_rest()
         elif escolha_user == 3:
             alternar_estado_restaurante()
+        # elif escolha_user == 4:
+        #     remover_rest()
         elif escolha_user == 4:
-            remover_rest()
-        elif escolha_user == 5:
             finalizar_app()
         else:
             opcao_invalida()
