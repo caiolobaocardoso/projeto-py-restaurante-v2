@@ -38,6 +38,3 @@ class Restaurante:
         quantidade_de_notas = len(self._avaliacao)
         media = round(soma_das_notas / quantidade_de_notas, 1)
         return media
-
-
-Restaurante.listar_restaurantes()
